@@ -58,28 +58,33 @@ export default {
             e.stopPropagation();
         },false);
 
-        EventBus.$on('reset-query', () => {
-            this.selected_option_indexes = [];
-        });
-
         let lastIndex = this.optionsCount - 1;
 
-        if (has(this.column,'filter.init.value')) {
-            if (this.isSingleMode) {
-                let index = this.column.filter.init.value;
-                if (index > lastIndex || index < 0) return;
-                this.addOption(index)
-            } else {
-                if (Array.isArray(this.column.filter.init.value)) {
-                    this.column.filter.init.value.forEach(index => {
-                        if (index > lastIndex || index < 0) return;
-                        this.addOption(index)
-                    });
+        const init_filter = (function(){
+            if (has(this.column,'filter.init.value')) {
+                if (this.isSingleMode) {
+                    let index = this.column.filter.init.value;
+                    if (index > lastIndex || index < 0) return;
+                    this.addOption(index)
                 } else {
-                    console.log("Initial value for 'multi' mode should be an array");
+                    if (Array.isArray(this.column.filter.init.value)) {
+                        this.column.filter.init.value.forEach(index => {
+                            if (index > lastIndex || index < 0) return;
+                            this.addOption(index)
+                        });
+                    } else {
+                        console.log("Initial value for 'multi' mode should be an array");
+                    }
                 }
             }
-        }
+        }).bind(this);
+        init_filter();
+
+        EventBus.$on('reset-query', () => {
+            this.selected_option_indexes = [];
+            init_filter();
+        });
+
 
         this.$nextTick(() => { this.canEmit = true });
     },
