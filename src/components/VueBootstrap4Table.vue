@@ -911,6 +911,7 @@ export default {
         },
 
         simpleFilter(value, filter_text,config) {
+            if (value == null) value = "";
 
             if (typeof value !== "string") {
                 value = value.toString();
@@ -930,6 +931,7 @@ export default {
             return value.indexOf(filter_text) > -1;
         },
         multiSelectFilter(value, selected_options,config) {
+            if (value == null) value = "";
 
             if (typeof value !== "string") {
                 value = value.toString().toLowerCase();

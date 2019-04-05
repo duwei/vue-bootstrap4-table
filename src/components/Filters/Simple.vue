@@ -36,7 +36,7 @@
                 this.$refs.simple_filter_input.value = this.column.filter.init.value;
             }
             EventBus.$on('reset-query', () => {
-                this.$refs.simple_filter_input.value = "";
+                if (this.$refs.simple_filter_input) this.$refs.simple_filter_input.value = "";
             });
         },
         methods: {
