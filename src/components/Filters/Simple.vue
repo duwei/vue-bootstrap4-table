@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group has-clear-right">
+  <div class="form-group has-clear-right mb-0">
     <span v-if="showClearButton" class="form-control-feedback vbt-simple-filter-clear" @click="clearFilter">
         <slot name="vbt-simple-filter-clear-icon">
 
