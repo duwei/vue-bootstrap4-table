@@ -1191,7 +1191,7 @@ export default {
             return result.length;
         },
         tableClasses() {
-            let classes = "";
+            let classes = "table-striped table-bordered";
             if (typeof this.classes.table == "string") {
                 return this.classes.table;
             } else if (typeof this.classes.table == "object") {
