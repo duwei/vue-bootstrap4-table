@@ -1408,6 +1408,7 @@ export default {
         -moz-user-select: none;     /* Firefox all */
         -ms-user-select: none;      /* IE 10+ */
         user-select: none;          /* Likely future */
+        white-space: nowrap;
     }
     .vbt-global-search-clear {
         cursor: pointer;
