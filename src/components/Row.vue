@@ -126,7 +126,7 @@
                 return get(row, name);
             },
             cellClasses(column) {
-                let classes = "";
+                let classes = "text-nowrap";
 
                 let default_text_alignment = "text-center";
 
