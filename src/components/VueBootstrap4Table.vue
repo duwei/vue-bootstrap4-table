@@ -395,6 +395,7 @@ export default {
             isResponsive: true,
             preservePageOnDataChange: false,
             canEmitQueries : false,
+            single_row_selection: true,
         };
     },
     mounted() {
@@ -627,6 +628,9 @@ export default {
         },
         handleAddRow(payload) {
             let row = this.vbt_rows[payload.rowIndex];
+            if (this.single_row_selection && this.lastSelectedItemIndex) {
+                this.handleRemoveRow({'shiftKey':false, "rowIndex":this.lastSelectedItemIndex});
+            }
             if (this.isShiftSelection(payload.shiftKey,payload.rowIndex)) {
                 let rows = this.getShiftSelectionRows(payload.rowIndex);
                 rows.forEach((_row) => {this.addSelectedItem(_row)});
@@ -1349,6 +1353,9 @@ export default {
         vbt_rows: {
             handler: function (newVal, oldVal) {
                 // resetting the shift mode
+                if (this.lastSelectedItemIndex) {
+                    this.handleRemoveRow({'shiftKey':false, "rowIndex":this.lastSelectedItemIndex});
+                }
                 this.lastSelectedItemIndex = null;
 
                 if (this.selected_items.length == 0) {
