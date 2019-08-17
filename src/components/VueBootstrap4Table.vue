@@ -495,6 +495,8 @@ export default {
 
             this.preservePageOnDataChange = (has(this.config, 'preservePageOnDataChange')) ? (this.config.preservePageOnDataChange) : false;
 
+            this.single_row_selection = (has(this.config, 'single_row_selection')) ? (this.config.single_row_selection) : true;
+
         },
 
         initialSort() {
