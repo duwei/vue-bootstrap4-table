@@ -630,7 +630,7 @@ export default {
         },
         handleAddRow(payload) {
             let row = this.vbt_rows[payload.rowIndex];
-            if (this.single_row_selection && this.lastSelectedItemIndex) {
+            if (this.single_row_selection && this.lastSelectedItemIndex !== null) {
                 this.handleRemoveRow({'shiftKey':false, "rowIndex":this.lastSelectedItemIndex});
             }
             if (this.isShiftSelection(payload.shiftKey,payload.rowIndex)) {
