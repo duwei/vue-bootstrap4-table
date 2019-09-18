@@ -626,7 +626,8 @@ export default {
             }
         },
         isShiftSelection(shiftKey,rowIndex){
-            return (shiftKey == true) && (this.lastSelectedItemIndex != null) && (this.lastSelectedItemIndex != rowIndex);
+            return false;
+            // return (shiftKey == true) && (this.lastSelectedItemIndex != null) && (this.lastSelectedItemIndex != rowIndex);
         },
         handleAddRow(payload) {
             let row = this.vbt_rows[payload.rowIndex];
